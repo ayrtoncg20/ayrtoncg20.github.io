@@ -72,3 +72,52 @@ function moved(event) { //llamamos a la funcion moved y le pasamos el objeto eve
 
 </body>
 </html>
+
+<tab-panel>
+  <div data-tabname="one">Tab one</div> <!--Definimos las pestañas-->
+  <div data-tabname="two">Tab two</div>
+  <div data-tabname="three">Tab three</div>
+</tab-panel>
+<script>
+  function asTabs(node) { //Creamos una funcion y le pasamos 
+    var tabs = []; //Creamos un array de pestañas 
+
+  // comprobar la cantidad de pestañas y presionar en arry
+  for (var i = 0; i < node.childNodes.length; i++) { //
+    var child = node.childNodes[i]; //La propiedad de solo lectura Node.childNodes devuelve una colección de hijos nodes del elemento dado donde el primer nodo hijo es asignado un índice 0.
+    if (child.nodeType == document.ELEMENT_NODE) //La propiedad de solo lectura Node.nodeType retornará un valor positivo entero representando el tipo de nodo.
+      tabs.push(child); //Metemos en el array de pestañas las pestañas
+  }
+
+  // establecer botones de pestañas
+  var tabList = document.createElement("div"); //Creamos una variable y le guardamos un objeto div
+  tabList.setAttribute("id", "tabList"); //
+
+  tabs.forEach(function(tab, i) {
+    var button = document.createElement("button");
+    button.textContent = tab.getAttribute("data-tabname");
+    button.addEventListener("click", function() { selectTab(i); });
+    tabList.appendChild(button);
+  });
+  node.insertBefore(tabList, node.firstChild);
+
+  // seleccione pestaña, estableciendo estilos en consecuencia
+  function selectTab(n) {
+    tabs.forEach(function(tab, i) {
+      if (i == n)
+        tab.style.display = "";
+      else
+        tab.style.display = "none";
+    });
+    for (var i = 0; i < tabList.childNodes.length; i++) {
+      tabList.childNodes[i].style.marginRight = "3px";
+      if (i == n)
+        tabList.childNodes[i].style.background = "violet";
+      else
+        tabList.childNodes[i].style.background = "";
+    }
+  }
+  selectTab(0);
+  }
+  asTabs(document.querySelector("tab-panel"));
+</script>
