@@ -1,22 +1,23 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title> Censores Keyboard</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+<body>
+    
+    <p> Teclas bloqueadas del teclado</p>
+    <input type="text" name="ejercicio1" id="ejercicio1" placeholder="Teclas Q, W, X bloqueadas" class="form-control" style="WIDTH: 228px;"
+        required autocomplete="off" onkeypress="return (event.charCode != 81 && event.charCode != 87 && event.charCode != 88 && event.charCode != 113 && event.charCode != 119 && event.charCode != 120)"/></input>
+        
+    <!-- 
+        La funcion onkeypress toma el evento cuando el usuario presiona una tecla del teclado. 
+        event.charCode captura el código ascii de la tecla presiona por el usuario.
+        Lo unico que tengo que hacer es devolver el valor cuando no sea los codigos que le he pasado, en este caso el 81 corresponde a la Q, el 87 a la W, el 88 a la X, el 113 a la q, el 119 a la w y el 120 a la x, lo demas es crear un input y puse un placeholder para que el usuario que fuera a introducir esas teclas supiera que estan bloqueadas 
+    -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+	
+</body>
 </html>
