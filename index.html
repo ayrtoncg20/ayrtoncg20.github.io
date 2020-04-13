@@ -21,3 +21,54 @@
 	
 </body>
 </html>
+
+<!DOCTYPE html>
+<style>
+  .trail { /* className for the trail elements */
+    position: absolute;
+    height: 10px; width: 10px;
+    border-radius: 3px;
+    background: #ff0000; 
+  }
+  body {
+    height: 750px;
+  }
+</style>
+
+<body>
+
+<script>
+   document.body.addEventListener("mousemove", moved);  
+
+   //Con el objeto document se controla la pagina web y todos los elementos que contienen dicha pagina. 
+   //Creamos una llamada a al metodo addEventListenes a ver cuando se mueve el ratón dentro del body que en este caso
+   //hemos puesto que sea de una altura de 750px
+   //La funcion addEventListener nos sirve para registrar un evento a un objeto especifico. 
+   //El tipo que escucha esta funcion es "mousemove". 
+
+// create, style, append trail elements
+var trailElements = []; //Creamos un array llamado trailElements
+var numOfTrailElements = 10; //El numero de puntos por defecto que va a tener el camino es de 10
+for (var i = 0; i < numOfTrailElements; i++) { //Hacemos un for que recorra desde 0 hasta el numero de elementos del camino
+  var element = document.createElement('div'); //Creeamos un elemento div por cada uno de los elementos creados anteriormente que son 10
+  element.className = 'trail'; //Tenemos que darle estilo a este elemento por lo que definimos que la className es trail que es nuestra funcion creada en css para dar estilo
+  document.body.appendChild(element); //Por medio del metodo appendChild podemos incluir en un nodo un nuevo hijo, el nuevo nodo se incluye inmediatamente despues de los hijos ya existentes (si hay alguno) y el nodo padre cuenta con una nueva rama
+  trailElements.push(element); //Metemos todos estos elementos en el array creado anteriormente
+}
+
+// Cuando el raton se mueve, muestra los elementos de la estela tras el punto del mouse
+var counter = 0; // Creamos un indice para saber cual es el indice del elemento del camino actual
+function moved(event) { //llamamos a la funcion moved y le pasamos el objeto event por parametro, el objeto event almacena informacion sobre un evento
+  trailElements[counter].style.left = event.clientX + 'px'; //Dentro del array le pasamos counter que ahora mismo es 0. style.left ->  La propiedad izquierda establece o devuelve la posición izquierda de un elemento posicionado.  La posicion izquierda ahora es la posicion primera que teniamos. event.clientX -> obtiene la coordenada horizontal.
+  trailElements[counter].style.top = event.clientY + 'px'; //Dentro del array y para saber la coordenada vertical utilizamos style.top y luego event.clientY
+
+  if (counter == 9) { //Si el contador es 9 significa que todos los puntos se estan mostrando en la pantalla 
+    counter = 0; //Si ya es 9 ahora ponemos el contador de nuevo a 0 para volver a empezar a mostrar los puntos
+  } else { //Si no es 9 sumamos uno al contador
+      counter += 1; l
+  }
+}
+</script>
+
+</body>
+</html>
